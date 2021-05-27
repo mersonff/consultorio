@@ -1,0 +1,36 @@
+<%= render 'shared/errors', obj: @patient %>
+<%= form_for(@patient, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+	<div class="mb-3 row">
+		<div class="col-md-2 col-form-label ">
+			<%= f.label :name, "Nome" %>
+		</div>
+		<div class="col-md-6">
+            <%= f.text_field :name, class: "form-control", placeholder: "Entre com seu nome" %>
+        </div>
+	</div>
+	<div class="mb-3 row">
+		<div class="col-md-2 col-form-label ">
+			<%= f.label :cpf, "CPF" %>
+		</div>
+		<div class="col-md-2">
+			<%= f.text_field :cpf, class: "form-control", placeholder: "Entre com o seu CPF" %>
+		</div>
+	</div>
+	<div class="mb-3 row">
+		<div class="col-md-2 col-form-label">
+			<%= f.label :birth_date, "Data de Nascimento" %>
+		</div>
+		<div class="col-md-2">
+			<%= f.date_field :birth_date, class: "form-control" %>
+		</div>
+	</div>
+
+	<div class="mb-3 row">
+		<div class="offset-2 col-md-10">
+			<%= f.submit(@patient.new_record? ? "Salvar" : "Atualizar", class: "btn btn-primary btn-lg btn-block") %>
+		</div>
+	</div>
+<% end %>
+<div class="offset-4 col-md-4 colormatch">
+    "[ <%= link_to "Cancelar e retornar para lista de pacientes", patients_path %> ]"
+</div>

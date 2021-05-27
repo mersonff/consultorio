@@ -1,0 +1,29 @@
+<%= render 'shared/page_title', title: "Pacientes Cadastrados" %>
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Nome</th>
+			<th scope="col">CPF</th>
+			<th scope="col">Date de Nascimento</th>
+            <th></th>
+		</tr>
+	</thead>
+	<tbody>	
+		<% @patients.each do |patient| %>
+		<tr>
+			<td><%= patient.id %></td>
+			<td><%= patient.name %></td>
+			<td><%= patient.cpf %></td>
+			<td><%= patient.birth_date.strftime('%d/%m/%Y') %></td>
+            <td><%= link_to "Editar", edit_patient_path(patient), class: "btn btn-warning btn-sm" %> <%= link_to "Deletar", patient_path(patient), class: "btn btn-danger btn-sm", method: :delete,
+									data: {confirm: "Tem certeza que deseja deletar o paciente?"} %></td>
+		</tr>
+		<% end %> 
+		
+	</tbody>
+</table>
+<div align="center">
+	<%= will_paginate %>
+</div>

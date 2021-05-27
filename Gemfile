@@ -12,6 +12,11 @@ gem 'puma', '~> 5.0'
 # Use SCSS for stylesheets
 gem 'sass-rails', '>= 6'
 
+gem 'bootstrap', '~> 5.0.1'
+gem 'jquery-rails'
+gem 'will_paginate', '~> 3.1.0'
+
+
 gem 'validates_timeliness', '~> 6.0.0.alpha1'
 gem 'cpf_cnpj'
 gem "validators"
