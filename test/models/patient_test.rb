@@ -27,8 +27,8 @@ class PatientTest < ActiveSupport::TestCase
     end
 
     test "cpf should be unique" do
-        @patient2 = Patient.new(name: "João", birth_date: "13/02/1990", cpf: "12345678910")
-        @patient2.save
+        @patient.save
+        @patient2 = Patient.new(name: "João", birth_date: "13/02/1990", cpf: "04209448346")
         assert_not @patient2.valid?
     end
 
