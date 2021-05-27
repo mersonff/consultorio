@@ -1,0 +1,27 @@
+<%= render 'shared/page_title', title: "Médicos Cadastrados" %>
+
+<table class="table">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Nome</th>
+			<th scope="col">CRM</th>
+            <th></th>
+		</tr>
+	</thead>
+	<tbody>	
+		<% @doctors.each do |doctor| %>
+		<tr>
+			<td><%= doctor.id %></td>
+			<td><%= doctor.name %></td>
+			<td><%= doctor.crm_uf + doctor.crm %></td>
+            <td><%= link_to "Editar", edit_doctor_path(doctor), class: "btn btn-warning btn-sm" %> <%= link_to "Deletar", doctor_path(doctor), class: "btn btn-danger btn-sm", method: :delete,
+									data: {confirm: "Tem certeza que deseja deletar o médico?"} %></td>
+		</tr>
+		<% end %> 
+		
+	</tbody>
+</table>
+<div align="center">
+	<%= will_paginate %>
+</div>
