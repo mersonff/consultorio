@@ -12,7 +12,9 @@ class AppointmentsController < ApplicationController
 
     def create
         @appointment = Appointment.new(appointment_params)
-        @appointment.ends_at = @appointment.starts_at + 30.minutes
+		if !@appointment.starts_at.nil?
+        	@appointment.ends_at = @appointment.starts_at + 30.minutes
+		end
 		if @appointment.save
 			flash[:success] = "Consulta cadastrada com sucesso!"
 			redirect_to root_path

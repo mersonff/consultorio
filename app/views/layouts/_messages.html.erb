@@ -2,9 +2,11 @@
 	<div class="col-md-10 offset-1">
 		<% flash.each do |name, msg| %>
 		  <div class="alert alert-<%= name %>">
-		  	<a href="#" class="close" data-dismiss="alert">&#215;</a>
-		  	<%= msg %>
+				<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+				</button> 
+			<%= msg %>
 		  </div>
 		<% end %>
+		
 	</div>
 </div>
