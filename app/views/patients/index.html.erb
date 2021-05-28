@@ -1,6 +1,6 @@
 <%= render 'shared/page_title', title: "Pacientes Cadastrados" %>
 
-<table class="table">
+<table class="table" id="myTable">
 	<thead class="thead-dark">
 		<tr>
 			<th scope="col">#</th>
@@ -27,3 +27,8 @@
 <div align="center">
 	<%= will_paginate %>
 </div>
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>

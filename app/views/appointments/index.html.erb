@@ -1,0 +1,38 @@
+<%= render 'shared/page_title', title: "Lista de consultas" %>
+
+
+<div class="mb-3 row">
+<table class="table" id="myTable">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Data de término</th>
+			<th scope="col">Médico</th>
+            <th scope="col">Paciente</th>
+            <th></th>
+		</tr>
+	</thead>
+	<tbody>	
+		<% @appointments.each do |appoint| %>
+		<tr>
+			<td><%= appoint.id %></td>
+			<td><%= appoint.ends_at.strftime('%d/%m/%Y') %></td>
+			<td><%= appoint.doctor.name %></td>
+            <td><%= appoint.patient.name %></td>
+            <td><%= link_to "Editar", edit_appointment_path(appoint), class: "btn btn-warning btn-sm" %> <%= link_to "Deletar", appointment_path(appoint), class: "btn btn-danger btn-sm", method: :delete,
+									data: {confirm: "Tem certeza que deseja deletar a consulta?"} %></td>
+		</tr>
+		<% end %> 
+		
+	</tbody>
+</table>
+</div>
+<div align="center">
+	<%= will_paginate %>
+</div>
+
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>

@@ -1,0 +1,54 @@
+<div class="mb-3"></div>
+<div class="row">
+    <div class="mt-3 mb-3 card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">Consultas já realizadas</h5>
+        <p class="card-text"><%= @quantidade_de_consultas_ja_realizadas %></p>
+    </div>
+    </div> 
+    <div class="mt-3 mb-3 card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Pacientes atendidos hoje</h5>
+    <p class="card-text"><%= @pacientes_atendidos_hoje %></p>
+  </div>
+</div> 
+
+<%= render 'shared/page_title', title: "Consultas já realizadas" %>
+
+
+</div>
+<div class="mb-3 row">
+<table class="table" id="myTable">
+	<thead class="thead-dark">
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">Data de término</th>
+			<th scope="col">Médico</th>
+            <th scope="col">Paciente</th>
+            <th></th>
+		</tr>
+	</thead>
+	<tbody>	
+		<% @consultas_realizadas.each do |appoint| %>
+		<tr>
+			<td><%= appoint.id %></td>
+			<td><%= appoint.ends_at.strftime('%d/%m/%Y') %></td>
+			<td><%= appoint.doctor.name %></td>
+            <td><%= appoint.patient.name %></td>
+            <td><%= link_to "Editar", edit_doctor_path(doctor), class: "btn btn-warning btn-sm" %> <%= link_to "Deletar", doctor_path(doctor), class: "btn btn-danger btn-sm", method: :delete,
+									data: {confirm: "Tem certeza que deseja deletar o médico?"} %></td>
+		</tr>
+		<% end %> 
+		
+	</tbody>
+</table>
+</div>
+<div align="center">
+	<%= will_paginate @consultas_realizadas %>
+</div>
+
+<script>
+$(document).ready( function () {
+    $('#myTable').DataTable();
+} );
+</script>

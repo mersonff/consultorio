@@ -1,0 +1,38 @@
+<%= render 'shared/errors', obj: @appointment %>
+<%= form_for(@appointment, :html => {class: "form-horizontal", role: "form"}) do |f| %>
+	<div class="mb-3 row">
+		<div class="col-md-2 col-form-label ">
+			<%= f.label :starts_at, "Data: " %>
+		</div>
+		<div class="col-md-6">
+            <%= f.datetime_field :starts_at, class: "form-control" %>
+        </div>
+	</div>
+	<div class="mb-3 row">
+		<div class="col-md-2 col-form-label ">
+			<%= f.label :doctor_id, "Médico" %>
+		</div>
+		<div class="col-md-6">
+			<%= f.collection_select(:doctor_id, Doctor.all, :id, :name,  {prompt: "Selecione um médico"}, { class: "custom-select form-control" }) %>
+		</div>      
+	</div>
+
+    <div class="mb-3 row">
+		<div class="col-md-2 col-form-label ">
+			<%= f.label :patient_id, "Paciente" %>
+		</div>
+		<div class="col-md-6">
+			<%= f.collection_select(:patient_id, Patient.all, :id, :name,  {prompt: "Selecione um paciente"}, { class: "custom-select form-control" }) %>
+		</div>      
+	</div>
+
+
+	<div class="mb-3 row">
+		<div class="offset-2 col-md-10">
+			<%= f.submit(@appointment.new_record? ? "Salvar" : "Atualizar", class: "btn btn-primary btn-lg btn-block") %>
+		</div>
+	</div>
+<% end %>
+<div class="offset-4 col-md-4 colormatch">
+    "[ <%= link_to "Cancelar e retornar para lista de médicos", doctors_path %> ]"
+</div>
