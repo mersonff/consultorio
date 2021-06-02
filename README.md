@@ -1,24 +1,13 @@
-# README
+# Simples CRUD com Rails 6
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Algumas das ferramentas utilizadas:
 
-Things you may want to cover:
+* Boostrap 5
 
-* Ruby version
+* validation_timeleness gem
 
-* System dependencies
+* cpf_cnpj gem
 
-* Configuration
+* Select2
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Datatables
