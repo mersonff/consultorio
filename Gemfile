@@ -14,6 +14,7 @@ gem 'sass-rails', '>= 6'
 gem 'bootstrap', '~> 5.0.1'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
+gem 'rails-i18n'
 
 
 gem 'validates_timeliness', '~> 6.0.0.alpha1'

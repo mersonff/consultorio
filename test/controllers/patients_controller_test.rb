@@ -30,7 +30,7 @@ class PatientsControllerTest < ActionDispatch::IntegrationTest
 
   test "should update patient" do
     patch patient_url(@patient), params: { patient: { name: "Esteiner" } }
-    assert_redirected_to patients_url
+    assert_response :success
   end
 
   test "should destroy patient" do

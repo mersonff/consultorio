@@ -38,8 +38,8 @@
 			<td><%= doctor.id %></td>
             <td><%= doctor.name %></td>
 			<td><%= doctor.crm + doctor.crm_uf %></td>
-			<td><%= Appointment.where('doctor_id = ? AND ends_at < ?', doctor.id, DateTime.current).count %></td>
-			<td><%= Appointment.where('doctor_id = ? AND starts_at > ? AND ends_at < ?', doctor.id, DateTime.current.beginning_of_day, DateTime.current).count %></td>
+			<td><%= all_appointments_count(doctor) %></td>
+			<td><%= appointments_today(doctor) %></td>
 
 		</tr>
 		<% end %> 	

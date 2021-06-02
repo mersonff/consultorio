@@ -18,19 +18,25 @@ class Appointment < ApplicationRecord
     private 
 
     def duration
-        self.starts_at + 30.minutes 
+        if starts_at.present?
+            self.starts_at + 30.minutes 
+        end
     end
 
     def lunchtime
-        if self.starts_at.strftime('%H:%M') > '12:00' && self.starts_at.strftime('%H:%M') < '13:00'
-            puts 'lunchtime'
-            errors.add(:starts_at, "É hora do lanche")
-        end 
+        if starts_at.present?
+            if self.starts_at.strftime('%H:%M') > '12:00' && self.starts_at.strftime('%H:%M') < '13:00'
+                puts 'lunchtime'
+                errors.add(:starts_at, "É hora do lanche")
+            end 
+        end
     end
 
     def no_appointment_overlap
-        if (Appointment.where("(? BETWEEN starts_at AND ends_at)", self.starts_at).any?)
-            errors.add(:starts_at, 'Sobrepõe a outra consulta.')
+        if starts_at.present? && ends_at.present?
+            if (Appointment.where("(? BETWEEN starts_at AND ends_at)", self.starts_at).any?)
+                errors.add(:starts_at, 'Sobrepõe a outra consulta.')
+            end
         end
     end
 
